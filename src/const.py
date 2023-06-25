@@ -5,24 +5,11 @@ EXCLUDE_DIRS = ['__pycache__', '.venv', '.git', '.idea', 'venv', 'env', 'node_mo
 
 ALLOW_FILES = ['.txt', '.js', '.mjs', '.ts', '.tsx', '.css', '.scss', '.less', '.html', '.htm', '.json', '.py',
                '.java', '.c', '.cpp', '.cs', '.go', '.php', '.rb', '.rs', '.swift', '.kt', '.scala', '.m', '.h',
-               '.sh', '.pl', '.pm', '.lua', '.sql', 'ipynb']
+               '.sh', '.pl', '.pm', '.lua', '.sql']
+
+ipynb = ".ipynb"
 
 EXCLUDE_FILES = ['requirements.txt', 'package.json', 'package-lock.json', 'yarn.lock']
-
-MODEL_TYPES = {
-    "OPENAI": "openai",
-    "LOCAL": "local",
-}
-
-DEFAULT_CONFIG = {
-    "max_tokens": "2056",
-    "chunk_size": "2056",
-    "chunk_overlap": "256",
-    "k": "1",
-    "model_name": "gpt-3.5-turbo-0613",
-    "model_path": "models/ggml-gpt4all-j-v1.3-groovy.bin",
-    "model_type": MODEL_TYPES["OPENAI"],
-}
 
 LOADER_MAPPING = {
     ".csv": {

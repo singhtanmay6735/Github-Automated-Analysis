@@ -1,9 +1,7 @@
 gitpython==3.1.18
 requests==2.26.0
 langchain
-tiktoken 
-matplotlib 
-seaborn 
+tiktoken
 tqdm
 halo
 openai

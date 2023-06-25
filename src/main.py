@@ -7,7 +7,7 @@ def find_most_complex_repo(user):
     max_score = 0
     max_repo = None
     for repo in repos:
-        local_path = f'data/repos_clone/{user}/{repo["name"]}'
+        local_path = f'./data/repos_cloned/{user}/{repo["name"]}'
         clone_repo(repo["clone_url"], local_path)
         score = evaluate_repo(local_path)
         if score > max_score:
@@ -17,4 +17,5 @@ def find_most_complex_repo(user):
     return max_repo, max_score
 
 
-most_complex_repo = find_most_complex_repo('username')
+username = ""
+most_complex_repo = find_most_complex_repo(username)

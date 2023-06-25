@@ -1,5 +1,5 @@
 from src.modules import *
-from src.const import LOADER_MAPPING, EXCLUDE_FILES
+from src.const import LOADER_MAPPING, EXCLUDE_FILES, ipynb
 
 def get_repositories(user):                                                           #change user in get_repositories to user_url.
     response = requests.get(f'https://api.github.com/users/{user}/repos')
@@ -32,6 +32,12 @@ def is_ignored(path, root_dir):
     return len(ignored) > 0
 
 
+def fetch_ipynb_content(content):
+    notebook = nbformat.reads(content, as_version=4)
+    python_exporter = PythonExporter()
+    python_code, _ = python_exporter.from_notebook_node(notebook)
+    return python_code
+
 @Halo(text='📂 Loading files', spinner='dots')
 def load_files(root_dir):
     num_cpus = multiprocessing.cpu_count()
@@ -51,6 +57,10 @@ def load_files(root_dir):
                     load = loader(file_path, **args)
                     futures.append(pool.apply_async(load.load_and_split))
                     loaded_files.append(file_path)
+                if file_path.endswith(ipynb):
+                    python_code = fetch_ipynb_content(file_path)
+                    loaded_files.append(python_code)
+            
         docs = []
         for future in futures:
             docs.extend(future.get())
