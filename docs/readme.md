@@ -1,4 +1,4 @@
-# Project Name: Mercor ML Assignment
+# Project Name: Github Profile Automated Analysis (Personal Ongoing Project)
 
 This project is designed to find the most technically complex repository among all the public repositories of a GitHub user. It utilizes Python, OpenAI APIs, langchain, and Cohere APIs to achieve this functionality.
 
